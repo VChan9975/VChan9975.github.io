@@ -1,0 +1,43 @@
+/* 基本的页面样式 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #add8e6; /* 浅蓝色背景 */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+/* 标题样式 */
+header {
+    background-color: #357ABD; /* 和谐的深蓝色 */
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* 链接列表样式 */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+}
+
+/* 链接按钮样式 */
+li a {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #357ABD;
+    padding: 10px 20px;
+    border: 2px solid #357ABD;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #357ABD;
+    color: #ffffff;
+}
