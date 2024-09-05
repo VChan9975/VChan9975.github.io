@@ -1,47 +1,51 @@
 /* Basic Page Styling */
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    color: #333;
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  color: #333;
 }
 
 /* Header Styling */
 h1 {
-    text-align: center;
-    font-size: 2em;
-    margin-bottom: 20px;
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
 }
 
-/* About Section Styling */
-.about-section {
-    display: flex;
-    margin-bottom: 20px;
-}
-
+/* Image Float Styling */
 .profile-pic {
-    width: 150px;
-    height: auto;
-    border-radius: 50%;
-    margin-right: 20px;
+  width: 150px;
+  height: auto;
+  border-radius: 50%;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+/* Clear Float for Paragraphs */
+.reason {
+  clear: left;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /* Subheading and List Styling */
 .centered {
-    text-align: center;
-    margin-top: 30px;
+  text-align: center;
+  margin-top: 30px;
 }
 
 ul {
-    list-style: disc;
-    padding-left: 20px;
+  list-style: disc;
+  padding-left: 20px;
 }
 
 /* Link Styling */
 a {
-    color: #007BFF;
-    text-decoration: none;
+  color: #007bff;
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }

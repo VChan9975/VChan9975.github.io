@@ -1,39 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CNIT 133 - Web Development</title>
-    <meta name="description" content="A personal webpage for a CNIT 133 course, showcasing web development skills, technologies used, and valuable resources for developers.">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <meta
+      name="description"
+      content="For Mobile Web Development using HTML, CSS, JavaScript course."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <h1 id="main-heading">Mobile Web w/HTML, CSS & JavaScript</h1>
 
-    <h1>CNIT 133 - Web Development</h1>
+    <!-- Button to start the animation -->
+    <button id="animate-button">Start Animation</button>
 
-    <div class="about-section">
-        <img src="my_picture.JPG" alt="Victoria Chan" class="profile-pic">
-        <p class="about-me">
-            My name is Victoria Chan. I graduated from SF State with a major in Visual Communication Design and am now pursuing a CNIT AS degree. I have 2 years of experience in web development.
-        </p>
-    </div>
+    <img
+      src="my_picture.JPG"
+      alt="Picture of Victoria Chan"
+      class="profile-pic"
+    />
+    <p class="about-me">
+      My name is Victoria. I graduated from SF State with a major in Visual
+      Communication Design and am now pursuing a CNIT AS degree. I have 2 years
+      of experience in web development.
+    </p>
 
     <p class="reason">
-        I’m attending this class to enhance my web development skills and gain a deeper understanding of creating interactive web pages. This course will help me bridge the gap between design and development, making me a more versatile professional.
+      I’m attending this class to enhance my web development skills and gain a
+      deeper understanding of creating interactive web pages. This course will
+      help me bridge the gap between design and development, making me a more
+      versatile professional.
     </p>
 
     <h2 class="centered">Technologies for this Class</h2>
     <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
     </ul>
 
     <h2 class="centered">Resources</h2>
     <ul>
-        <li><a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer">MDN Web Docs</a> - A comprehensive resource for web developers, offering documentation, tutorials, and guides on HTML, CSS, JavaScript, and more.</li>
-        <li><a href="https://www.w3schools.com/" target="_blank" rel="noopener noreferrer">W3Schools</a> - A well-known platform for learning web development, providing easy-to-understand tutorials and references on various web technologies.</li>
+      <li>
+        <a
+          href="https://developer.mozilla.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >MDN Web Docs</a
+        >
+        - A comprehensive resource for web developers, offering documentation,
+        tutorials, and guides on HTML, CSS, JavaScript, and more.
+      </li>
+      <li>
+        <a
+          href="https://www.w3schools.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >W3Schools</a
+        >
+        - A well-known platform for learning web development, providing
+        easy-to-understand tutorials and references on various web technologies.
+      </li>
     </ul>
 
-</body>
+    <!-- jQuery Script for Animation -->
+    <script>
+      $(document).ready(function () {
+        $("#animate-button").click(function () {
+          // Animate the font size of the heading
+          $("#main-heading")
+            .animate({ fontSize: "3em" }, 500)
+            .animate({ fontSize: "2em" }, 500);
+
+          // Change the color of the font
+          setTimeout(function () {
+            $("#main-heading").css("color", "red");
+            setTimeout(function () {
+              $("#main-heading").css("color", "");
+            }, 500);
+          }, 500);
+
+          // Add a border around the picture
+          $(".profile-pic").css("border", "2px solid black");
+        });
+      });
+    </script>
+  </body>
 </html>
