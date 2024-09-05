@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript - Basic Operations - Part 2</title>
+    <meta
+      name="description"
+      content="Homework 2 part 2 for JavaScript, jQuery, AJAX course at CCSF"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <h2>Part 2: Form for Calculations</h2>
+    <form id="calculationForm">
+      <label for="number1">Number 1:</label>
+      <input id="number1" /><br /><br />
+
+      <label for="number2">Number 2:</label>
+      <input id="number2" /><br /><br />
+
+      <label for="number3">Number 3:</label>
+      <input id="number3" /><br /><br />
+
+      <button type="button" onclick="processData()">Process Data</button>
+      <button type="button" onclick="clearForm()">Clear Form</button>
+      <button type="button" id="fadeButton">Fade Results</button>
+
+      <div id="results"></div>
+    </form>
+
+    <p><a href="hw2.html">Back to Homework 2 Main Page</a></p>
+
+    <script>
+      function processData() {
+        const num1 = parseFloat(document.getElementById("number1").value);
+        const num2 = parseFloat(document.getElementById("number2").value);
+        const num3 = parseFloat(document.getElementById("number3").value);
+
+        if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+          document.getElementById("results").innerHTML =
+            "Error: Please enter valid numbers in all input boxes.";
+          return;
+        }
+
+        const sum = num1 + num2 + num3;
+        const average = sum / 3;
+        const product = num1 * num2 * num3;
+        const smallest = Math.min(num1, num2, num3);
+        const largest = Math.max(num1, num2, num3);
+
+        document.getElementById("results").innerHTML = `
+                Sum: ${sum}<br>
+                Average: ${average}<br>
+                Product: ${product}<br>
+                Smallest: ${smallest}<br>
+                Largest: ${largest}
+            `;
+
+        $("#results").fadeIn();
+      }
+
+      function clearForm() {
+        document.getElementById("number1").value = "";
+        document.getElementById("number2").value = "";
+        document.getElementById("number3").value = "";
+        document.getElementById("results").innerHTML = "";
+      }
+
+      $(document).ready(function () {
+        $("#fadeButton").click(function () {
+          $("#results").fadeOut();
+        });
+      });
+    </script>
+  </body>
+</html>
