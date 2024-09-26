@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 2 - Salesperson Commission Calculator</title>
     <meta
       name="description"
       content="Homework 3 part 2 for JavaScript, jQuery, AJAX course at CCSF"
     >
-    <title>Part 2 - Salesperson Commission Calculator</title>
+
+    <!-- Include jQuery and jQuery UI for tooltip functionality -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
     <style>
         label {
             display: inline-block;
@@ -25,7 +31,7 @@
     <h1>Salesperson Commission Calculator</h1>
     <form id="salesForm">
         <label for="salesperson">Salesperson Name:</label><br>
-        <input type="text" id="salesperson"><br><br>
+        <input type="text" id="salesperson" title="Please make sure that the salesperson's name is spelled correctly"><br><br>
 
         <label for="item1">Item 1 ($20.99):</label>
         <input type="text" id="item1" placeholder="Quantity" required><br>
@@ -52,6 +58,11 @@
     <div id="results"></div>
 
     <script>
+        $(function() {
+            // Enable tooltip on the Salesperson Name input field
+            $("#salesperson").tooltip();
+        });
+
         function calculateCommission() {
             // Prices for each item
             const itemPrices = [20.99, 12.75, 9.95, 35.89];
@@ -92,6 +103,6 @@
             document.getElementById("results").innerHTML = '';
         }
     </script>
-    <p><a href="hw3.html">Back to Homework 3 Main Page</a></p>
+     <p><a href="hw3.html">Back to Homework 3 Main Page</a></p>
 </body>
 </html>
