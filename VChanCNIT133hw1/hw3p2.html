@@ -3,79 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salesperson Commission Calculator</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(function() {
-            // Tooltip for salesperson name
-            $("#salesperson").tooltip({
-                content: "Please make sure that the salesperson's name is spelled correctly"
-            });
-        });
-
-        function calculateCommission() {
-            const itemPrices = [20.99, 12.75, 9.95, 35.89];
-            let quantities = [];
-            let totalSales = 0;
-
-            for (let i = 1; i <= 4; i++) {
-                let qty = parseInt(document.getElementById("item" + i).value);
-                if (isNaN(qty) || qty < 0) {
-                    document.getElementById("results").innerHTML = "Error: Please enter valid quantities.";
-                    return;
-                }
-                quantities.push(qty);
-                totalSales += qty * itemPrices[i - 1];
-            }
-
-            let commission = (totalSales * 0.09) + 250;
-            totalSales = totalSales.toFixed(2);
-            commission = commission.toFixed(2);
-
-            document.getElementById("totalSales").value = totalSales;
-            document.getElementById("totalEarnings").value = commission;
-        }
-
-        function clearForm() {
-            document.getElementById("salesForm").reset();
-            document.getElementById("totalSales").value = '';
-            document.getElementById("totalEarnings").value = '';
-        }
-    </script>
+    <meta
+      name="description"
+      content="Homework 3 part 2 for JavaScript, jQuery, AJAX course at CCSF"
+    >
+    <title>Part 2 - Salesperson Commission Calculator</title>
     <style>
-        label, input { margin: 5px 0; }
-        #totalSales, #totalEarnings { text-align: right; }
+        label {
+            display: inline-block;
+            width: 150px;
+        }
+        input {
+            margin-bottom: 10px;
+        }
+        #totalSales, #totalEarnings {
+            text-align: right;
+        }
     </style>
 </head>
 <body>
     <h1>Salesperson Commission Calculator</h1>
     <form id="salesForm">
         <label for="salesperson">Salesperson Name:</label><br>
-        <input type="text" id="salesperson" title="Please make sure that the salesperson's name is spelled correctly"><br><br>
+        <input type="text" id="salesperson"><br><br>
 
-        <label for="item1">Item 1 (Qty):</label>
-        <input id="item1" min="0"><br>
+        <label for="item1">Item 1 ($20.99):</label>
+        <input type="text" id="item1" placeholder="Quantity" required><br>
 
-        <label for="item2">Item 2 (Qty):</label>
-        <input id="item2" min="0"><br>
+        <label for="item2">Item 2 ($12.75):</label>
+        <input type="text" id="item2" placeholder="Quantity" required><br>
 
-        <label for="item3">Item 3 (Qty):</label>
-        <input id="item3" min="0"><br>
+        <label for="item3">Item 3 ($9.95):</label>
+        <input type="text" id="item3" placeholder="Quantity" required><br>
 
-        <label for="item4">Item 4 (Qty):</label>
-        <input id="item4" min="0"><br><br>
+        <label for="item4">Item 4 ($35.89):</label>
+        <input type="text" id="item4" placeholder="Quantity" required><br><br>
 
         <button type="button" onclick="calculateCommission()">Calculate</button>
         <button type="button" onclick="clearForm()">Clear</button><br><br>
 
-        <label>Total Sales:</label><br>
+        <label for="totalSales">Total Sales:</label><br>
         <input type="text" id="totalSales" readonly><br>
 
-        <label>Total Earnings:</label><br>
+        <label for="totalEarnings">Total Earnings:</label><br>
         <input type="text" id="totalEarnings" readonly><br>
     </form>
 
-    <div id="results" style="margin-top:20px;"></div>
+    <div id="results"></div>
+
+    <script>
+        function calculateCommission() {
+            // Prices for each item
+            const itemPrices = [20.99, 12.75, 9.95, 35.89];
+            const quantities = [];
+
+            // Get the quantities sold for each item
+            for (let i = 1; i <= 4; i++) {
+                const qty = document.getElementById("item" + i).value;
+                if (!isValidNumber(qty)) {
+                    document.getElementById("results").innerHTML = "Error: Please enter valid quantities.";
+                    return;
+                }
+                quantities.push(parseFloat(qty));
+            }
+
+            // Calculate total sales and commission
+            let totalSales = quantities.reduce((total, qty, index) => total + qty * itemPrices[index], 0);
+            let commission = totalSales * 0.09 + 250;
+
+            // Format the total sales and commission to 2 decimal places
+            totalSales = totalSales.toFixed(2);
+            commission = commission.toFixed(2);
+
+            // Display the results
+            document.getElementById("totalSales").value = totalSales;
+            document.getElementById("totalEarnings").value = commission;
+        }
+
+        function isValidNumber(value) {
+            const num = parseFloat(value);
+            return !isNaN(num) && num >= 0;
+        }
+
+        function clearForm() {
+            document.getElementById("salesForm").reset();
+            document.getElementById("totalSales").value = '';
+            document.getElementById("totalEarnings").value = '';
+            document.getElementById("results").innerHTML = '';
+        }
+    </script>
     <p><a href="hw3.html">Back to Homework 3 Main Page</a></p>
 </body>
 </html>
