@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #resultMessage {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Multiplication Game</h1>
+
+    <p id="question">Press the "Start Game" button to begin.</p>
+
+    <input id="answer" placeholder="Enter your answer" disabled>
+    <button id="submitAnswer" onclick="checkAnswer()" disabled>Submit Answer</button>
+
+    <div id="resultMessage"></div>
+
+    <button id="startGame" onclick="startGame()">Start Game</button>
+    <button id="playAgain" onclick="playAgain()" style="display: none;">Play Again</button>
+    <button id="exitGame" onclick="exitGame()" style="display: none;">Exit Game</button>
+
+    <script>
+        let num1, num2, correctAnswer;
+
+        function getRandomNumber() {
+            return Math.floor(Math.random() * 10);  // Generates a number between 0 and 9
+        }
+
+        function startGame() {
+            num1 = getRandomNumber();
+            num2 = getRandomNumber();
+            correctAnswer = num1 * num2;
+
+            document.getElementById("question").innerHTML = `How much is ${num1} times ${num2}?`;
+            document.getElementById("answer").disabled = false;
+            document.getElementById("submitAnswer").disabled = false;
+            document.getElementById("resultMessage").innerHTML = "";
+            document.getElementById("startGame").style.display = "none"; // Hide Start Game button
+            document.getElementById("playAgain").style.display = "none";
+            document.getElementById("exitGame").style.display = "none";
+            document.getElementById("answer").value = ""; // Clear the input field
+            document.getElementById("answer").focus();
+        }
+
+        function checkAnswer() {
+            let studentAnswer = parseInt(document.getElementById("answer").value);
+
+            if (studentAnswer === correctAnswer) {
+                document.getElementById("resultMessage").innerHTML = "Very good!";
+                document.getElementById("playAgain").style.display = "inline-block"; // Show Play Again and Exit buttons
+                document.getElementById("exitGame").style.display = "inline-block";
+                document.getElementById("answer").disabled = true;
+                document.getElementById("submitAnswer").disabled = true;
+            } else {
+                document.getElementById("resultMessage").innerHTML = "No. Please try again.";
+                document.getElementById("answer").value = ""; // Clear the input field
+                document.getElementById("answer").focus();
+            }
+        }
+
+        function playAgain() {
+            startGame(); // Start a new game
+        }
+
+        function exitGame() {
+            document.getElementById("question").innerHTML = "Thanks for playing, see you next time!";
+            document.getElementById("resultMessage").innerHTML = "";
+            document.getElementById("answer").disabled = true;
+            document.getElementById("submitAnswer").disabled = true;
+            document.getElementById("playAgain").style.display = "none";
+            document.getElementById("exitGame").style.display = "none";
+            document.getElementById("startGame").style.display = "inline-block"; // Show Start Game button again
+        }
+    </script>
+    <p><a href="hw3.html">Back to Homework 3 Main Page</a></p>
+</body>
+</html>
