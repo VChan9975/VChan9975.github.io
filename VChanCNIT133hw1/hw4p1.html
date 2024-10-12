@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="Homework 4 part 1 for JavaScript, jQuery, AJAX course at CCSF">
+    <title>Looping Statements</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <style>
+        #draggable {
+            width: 150px;
+            height: 150px;
+            background-color: lightblue;
+            text-align: center;
+            line-height: 150px;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript - Looping Statements</h1>
+
+    <h2>For Loop Example</h2>
+    <p id="for-loop-result"></p>
+
+    <h2>While Loop Example</h2>
+    <p id="while-loop-result"></p>
+
+    <h2>Draggable Element</h2>
+    <div id="draggable">Drag me!</div>
+
+    <script>
+        // For loop to calculate product and sum of every fourth integer from 5 to 25
+        let numbersFor = [5, 9, 13, 17, 21, 25];
+        let productFor = 1;
+        let sumFor = 0;
+
+        for (let i = 0; i < numbersFor.length; i++) {
+            productFor *= numbersFor[i];
+            sumFor += numbersFor[i];
+        }
+
+        // Display the results
+        document.getElementById('for-loop-result').innerHTML =
+            `The result of 5 * 9 * 13 * 17 * 21 * 25 is ${productFor.toLocaleString()}.<br>` +
+            `The result of 5 + 9 + 13 + 17 + 21 + 25 is ${sumFor.toLocaleString()}.`;
+
+        // While loop to calculate product and sum of every third integer from 3 to 18
+        let numbersWhile = [3, 6, 9, 12, 15, 18];
+        let productWhile = 1;
+        let sumWhile = 0;
+        let index = 0;
+
+        while (index < numbersWhile.length) {
+            productWhile *= numbersWhile[index];
+            sumWhile += numbersWhile[index];
+            index++;
+        }
+
+        // Display the results
+        document.getElementById('while-loop-result').innerHTML =
+            `The result of 3 * 6 * 9 * 12 * 15 * 18 is ${productWhile.toLocaleString()}.<br>` +
+            `The result of 3 + 6 + 9 + 12 + 15 + 18 is ${sumWhile.toLocaleString()}.`;
+
+        // jQuery UI draggable
+        $(function() {
+            $("#draggable").draggable();
+        });
+    </script>
+<p><a href="hw4.html">Back to Homework 4 Main Page</a></p>
+</body>
+</html>
