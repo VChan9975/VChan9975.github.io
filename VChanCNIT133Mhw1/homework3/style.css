@@ -1,0 +1,143 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #f0f8ff; 
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+h1, h2, h3 {
+    color: #ff6347; 
+    text-align: center;
+    font-weight: bold;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #555;
+    text-align: center;
+    padding: 0 20px;
+}
+
+
+.navbar {
+    background-color: #ff99cc;
+    border-bottom: 4px solid #ff69b4; 
+}
+
+.nav-link {
+    color: #fff !important;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    background-color: #ff69b4; 
+    border-radius: 10px;
+}
+
+
+button, .btn {
+    background-color: #ffcc00; 
+    color: white;
+    border-radius: 12px;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover, .btn:hover {
+    background-color: #ffa500; 
+}
+
+
+.form-control {
+    border: 2px solid #ffa07a; 
+    border-radius: 8px;
+    padding: 10px;
+}
+
+label {
+    color: #ff6347;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.card {
+    background-color: #fffacd; 
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background-color: #ffdab9; 
+    color: #333;
+    font-size: 18px;
+    text-align: center;
+}
+
+.card-body img {
+    border-radius: 50%; 
+    width: 120px;
+    height: 120px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+
+footer {
+    background-color: #ff99cc;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+h1, h2, h3, p, button, .btn, label, .form-control {
+    animation: float 2s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+
+body {
+    background-image: url('https://example.com/kids-background.png'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+@media (max-width: 768px) {
+    h1, h2, h3 {
+        font-size: 24px;
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+}
+
+.navbar-brand-custom {
+    color: #FFD700 !important; 
+    font-weight: bold; 
+    font-size: 24px; 
+}
+
+.navbar-brand-custom:hover {
+    color: #FFA500 !important; 
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Extra - ABC Toys</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
+        <a class="navbar-brand navbar-brand-custom" href="index.html">ABC Toys</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="products.html">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="location.html">Location</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="extra.html">Extra</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5 pt-5">
+        <h2>WURFL Database Capabilities</h2>
+        <p>The WURFL database provides developers with various capabilities to test and identify features of the device requesting the application. Below are three important capabilities offered by WURFL:</p>
+        
+        <!-- Capabilities Table -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Capability</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>brand_name</strong></td>
+                    <td>Identifies the brand of the device, such as Apple, Samsung, or Huawei. This is useful for optimizing content or features based on the device brand.</td>
+                </tr>
+                <tr>
+                    <td><strong>is_tablet</strong></td>
+                    <td>Indicates whether the device is a tablet or not. Developers can use this to provide a tablet-optimized layout or interface when necessary.</td>
+                </tr>
+                <tr>
+                    <td><strong>resolution_width</strong></td>
+                    <td>Gives the width of the device screen in pixels. This is particularly helpful in responsive design to adapt the layout according to the screen size.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
