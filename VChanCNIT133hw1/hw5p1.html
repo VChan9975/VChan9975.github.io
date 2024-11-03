@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="Homework 5 part 1 for JavaScript, jQuery, AJAX course at CCSF">
+    <title>CNIT 133 Homework 5 - Part 1</title>
+    <script>
+        function validateForm() {
+            // Clear any previous messages
+            const outputArea = document.getElementById("output");
+            outputArea.textContent = "";
+            let valid = true;
+
+            // Get form elements
+            const fullName = document.getElementById("fullName").value.trim();
+            const ageGroup = document.querySelector('input[name="ageGroup"]:checked');
+            const browsers = document.querySelectorAll('input[name="browser"]:checked');
+            const movieType = document.getElementById("movieType").value;
+
+            // Validation checks
+            if (!fullName) {
+                outputArea.textContent += "Please enter your full name.\n";
+                valid = false;
+            }
+            if (!ageGroup) {
+                outputArea.textContent += "Please select an age group.\n";
+                valid = false;
+            }
+            if (browsers.length === 0) {
+                outputArea.textContent += "Please select at least one browser.\n";
+                valid = false;
+            }
+            if (!movieType) {
+                outputArea.textContent += "Please select a movie type.\n";
+                valid = false;
+            }
+
+            // If valid, show submission message
+            if (valid) {
+                outputArea.textContent = "Thanks, your data was submitted!";
+            }
+
+            return false; // Prevent form submission for demonstration
+        }
+
+        function clearForm() {
+            document.getElementById("form1").reset();
+            document.getElementById("output").textContent = ""; // Clear output area
+        }
+    </script>
+</head>
+<body>
+    <h1>CNIT 133 Homework 5 - Part 1 User Information Form</h1>
+
+    <p><a href="hw5.html">Back to Homework 5 Main Page</a></p>
+
+    <form id="form1" onsubmit="return validateForm()">
+        <!-- Full Name Input -->
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName"><br><br>
+
+        <!-- Age Group Radio Buttons -->
+        <fieldset>
+            <legend>Age Group:</legend>
+            <input type="radio" id="age1" name="ageGroup" value="lessThan21">
+            <label for="age1">Less than 21</label><br>
+
+            <input type="radio" id="age2" name="ageGroup" value="between21And50">
+            <label for="age2">Between 21 and 50</label><br>
+
+            <input type="radio" id="age3" name="ageGroup" value="olderThan50">
+            <label for="age3">Older than 50</label><br>
+        </fieldset><br>
+
+        <!-- Browsers Checkbox Group -->
+        <fieldset>
+            <legend>Browsers Used:</legend>
+            <input type="checkbox" id="firefox" name="browser" value="Firefox">
+            <label for="firefox">Firefox</label><br>
+
+            <input type="checkbox" id="edge" name="browser" value="Edge">
+            <label for="edge">Edge</label><br>
+
+            <input type="checkbox" id="chrome" name="browser" value="Chrome">
+            <label for="chrome">Chrome</label><br>
+
+            <input type="checkbox" id="safari" name="browser" value="Safari">
+            <label for="safari">Safari</label><br>
+        </fieldset><br>
+
+        <!-- Movie Type Dropdown -->
+        <label for="movieType">Preferred Movie Type:</label>
+        <select id="movieType" name="movieType">
+            <option value="">--Select a Type--</option>
+            <option value="Action">Action</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Drama">Drama</option>
+            <option value="Documentary">Documentary</option>
+            <option value="Science Fiction">Science Fiction</option>
+        </select><br><br>
+
+        <!-- Buttons -->
+        <button type="submit">Submit</button>
+        <button type="button" onclick="clearForm()">Clear</button>
+    </form>
+
+    <!-- Output Area -->
+    <div id="output" style="margin-top: 20px;"></div>
+</body>
+</html>

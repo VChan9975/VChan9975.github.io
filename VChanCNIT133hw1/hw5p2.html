@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="Homework 5 part 2 for JavaScript, jQuery, AJAX course at CCSF">
+    <title>CNIT 133 Homework 5 - Part 2</title>
+    <script>
+        // Function for first dropdown to open URL on change
+        function navigateOnChange(event) {
+            const selectedURL = event.target.value;
+            if (selectedURL) {
+                window.open(selectedURL, "_blank", "noopener noreferrer");
+            }
+        }
+
+        // Function for second dropdown to open URL on button click
+        function navigateOnClick() {
+            const dropdown = document.getElementById("secondDropdown");
+            const selectedURL = dropdown.value;
+            if (selectedURL) {
+                window.open(selectedURL, "_blank", "noopener noreferrer");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>CNIT 133 Homework 5 - Part 2 URL Navigation Menus</h1>
+
+    <p><a href="hw5.html">Back to Homework 5 Main Page</a></p>
+
+    <!-- First Dropdown with onchange event -->
+    <label for="firstDropdown">Choose a website to open (on change):</label>
+    <select id="firstDropdown" onchange="navigateOnChange(event)">
+        <option value="">--Select a Website--</option>
+        <option value="https://www.ccsf.edu">Example 1</option>
+        <option value="https://www.google.com">Example 2</option>
+        <option value="https://ramid.ccsf.edu">Example 3</option>
+    </select>
+
+    <br><br>
+
+    <!-- Second Dropdown with onclick button -->
+    <label for="secondDropdown">Choose a website to open (on click):</label>
+    <select id="secondDropdown">
+        <option value="">--Select a Website--</option>
+        <option value="https://www.ccsf.edu">Sample 1</option>
+        <option value="https://www.google.com">Sample 2</option>
+        <option value="https://ramid.ccsf.edu">Sample 3</option>
+    </select>
+    <button onclick="navigateOnClick()">Go</button>
+
+</body>
+</html>

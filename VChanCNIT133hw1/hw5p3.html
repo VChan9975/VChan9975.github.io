@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="Homework 5 part 3 for JavaScript, jQuery, AJAX course at CCSF">
+    <title>CNIT 133 Homework 5 - Part 3</title>
+    <script>
+        // Extended data for states
+        const stateData = {
+            "alabama": { abbreviation: "AL", population: "4.90M", area: "52,420 sq mi", capital: "Montgomery" },
+            "alaska": { abbreviation: "AK", population: "0.73M", area: "663,268 sq mi", capital: "Juneau" },
+            "arizona": { abbreviation: "AZ", population: "7.28M", area: "113,990 sq mi", capital: "Phoenix" },
+            "arkansas": { abbreviation: "AR", population: "3.02M", area: "53,179 sq mi", capital: "Little Rock" },
+            "california": { abbreviation: "CA", population: "39.51M", area: "163,696 sq mi", capital: "Sacramento" },
+            "colorado": { abbreviation: "CO", population: "5.76M", area: "104,094 sq mi", capital: "Denver" }
+        };
+
+        function getStateInfo() {
+            const userInput = document.getElementById("stateInput").value.trim().toLowerCase();
+            const outputArea = document.getElementById("output");
+            outputArea.textContent = "";  // Clear previous output
+
+            let foundState = null;
+
+            // Check if input matches a state name or abbreviation
+            for (const [state, info] of Object.entries(stateData)) {
+                if (state === userInput || info.abbreviation.toLowerCase() === userInput) {
+                    foundState = { name: state, ...info };
+                    break;
+                }
+            }
+
+            if (foundState) {
+                // Display state information including capital
+                outputArea.innerHTML = `<strong>State Information:</strong><br>
+                                        Name: ${capitalize(foundState.name)}<br>
+                                        Abbreviation: ${foundState.abbreviation}<br>
+                                        Population: ${foundState.population}<br>
+                                        Area: ${foundState.area}<br>
+                                        Capital: ${foundState.capital}`;
+            } else {
+                // Display error message with available states
+                const availableStates = Object.keys(stateData).map(capitalize).join(", ");
+                outputArea.textContent = `Sorry, we do not have information about this state! We only have information about: ${availableStates}.`;
+            }
+
+            return false; // Prevent form submission for demonstration
+        }
+
+        function capitalize(word) {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        }
+
+        function clearForm() {
+            document.getElementById("stateForm").reset();
+            document.getElementById("output").textContent = ""; // Clear output area
+        }
+    </script>
+</head>
+<body>
+    <h1>CNIT 133 Homework 5 - Part 3 State Information Lookup</h1>
+
+    <p><a href="hw5.html">Back to Homework 5 Main Page</a></p>
+
+    <form id="stateForm" onsubmit="return getStateInfo()">
+        <label for="stateInput">Enter State Name or Abbreviation:</label>
+        <input type="text" id="stateInput" name="stateInput"><br><br>
+
+        <button type="submit">Get State Info</button>
+        <button type="button" onclick="clearForm()">Clear</button>
+    </form>
+
+    <div id="output" style="margin-top: 20px;"></div>
+</body>
+</html>
