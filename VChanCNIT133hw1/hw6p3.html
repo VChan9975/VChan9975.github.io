@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Homework 6 for JavaScript, jQuery, AJAX course at CCSF">
+    <title>Phone Number Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        input {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+        }
+        button {
+            padding: 10px 15px;
+            margin-right: 10px;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Phone Number Validation</h1>
+
+    <form id="phoneForm">
+        <label for="phoneInput">Enter your phone number (format: (999) 999-9999):</label>
+        <input type="text" id="phoneInput" placeholder="(999) 999-9999">
+        <button type="button" onclick="validatePhoneNumber()">Submit</button>
+        <button type="reset">Clear</button>
+    </form>
+
+    <div id="output"></div>
+
+    <a href="hw6.html">Back to Homework 6 Main Page</a>
+
+    <script>
+        function validatePhoneNumber() {
+            const phoneInput = document.getElementById('phoneInput').value;
+            const output = document.getElementById('output');
+
+            // Clear previous output
+            output.innerHTML = '';
+
+            // Regular expression for phone number in the format (999) 999-9999
+            const phoneRegex = /^\(\d{3}\) \d{3}-\d{4}$/;
+
+            // Validate the phone number format
+            if (phoneRegex.test(phoneInput)) {
+                // If the format is correct
+                output.innerHTML = `<p class="success">Thank you for your phone number! You should expect to be contacted by one of our agents in the future.</p>`;
+            } else {
+                // If the format is incorrect
+                output.innerHTML = `<p class="error">Error: Please enter the phone number in the correct format: (999) 999-9999.</p>`;
+            }
+        }
+    </script>
+
+</body>
+</html>

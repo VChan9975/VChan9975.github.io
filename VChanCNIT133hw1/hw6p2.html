@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Homework 6 for JavaScript, jQuery, AJAX course at CCSF">
+    <title>Character Search Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        textarea, input {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+        }
+        button {
+            padding: 10px 15px;
+            margin-right: 10px;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Character Search in Text</h1>
+
+    <form id="searchForm">
+        <label for="textContent">Enter your text content:</label>
+        <textarea id="textContent" rows="6" placeholder="Type or paste your content here..."></textarea>
+
+        <label for="searchChar">Enter a single character to search:</label>
+        <input type="text" id="searchChar" maxlength="1" placeholder="e.g., a">
+
+        <button type="button" onclick="performSearch()">Submit</button>
+        <button type="reset">Clear</button>
+    </form>
+
+    <div id="output"></div>
+
+    <a href="hw6.html">Back to Homework 6 Main Page</a>
+
+    <script>
+        function performSearch() {
+            const textContent = document.getElementById('textContent').value;
+            const searchChar = document.getElementById('searchChar').value;
+            const output = document.getElementById('output');
+
+            // Clear previous output
+            output.innerHTML = '';
+
+            // Validate the search character input (must be a single character)
+            if (searchChar.length !== 1) {
+                output.innerHTML = '<p class="error">Error: Please enter a single character to search.</p>';
+                return;
+            }
+
+            // Convert both the content and the search character to lowercase for case-insensitive search
+            const lowerCaseContent = textContent.toLowerCase();
+            const lowerCaseChar = searchChar.toLowerCase();
+
+            // Count the occurrences of the search character in the text content
+            let count = 0;
+            for (let char of lowerCaseContent) {
+                if (char === lowerCaseChar) {
+                    count++;
+                }
+            }
+
+            // Display the result based on the count
+            if (count > 0) {
+                output.innerHTML = `<p>The character "${searchChar}" appears ${count} time(s) in the text content.</p>`;
+            } else {
+                // Open a new window with a message if the character is not found
+                const newWindow = window.open("", "CharacterNotFound", "width=300,height=100");
+                newWindow.document.write(`
+                    <p>Search character "${searchChar}" not found in the content you typed.</p>
+                    <button onclick="window.close()">Close</button>
+                `);
+                // Clear the output area
+                output.innerHTML = '';
+            }
+        }
+    </script>
+
+</body>
+</html>

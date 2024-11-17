@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Homework 6 for JavaScript, jQuery, AJAX course at CCSF">
+    <title>Number Calculation Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+        }
+        button {
+            padding: 10px 15px;
+            margin-right: 10px;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Number Calculations Form</h1>
+
+    <form id="numberForm">
+        <label for="numberInput">Enter a number with at least 4 decimal places:</label>
+        <input type="text" id="numberInput" placeholder="e.g., 123.4567">
+        <button type="button" onclick="calculate()">Submit</button>
+        <button type="reset">Clear</button>
+    </form>
+
+    <div id="output"></div>
+
+    <a href="hw6.html">Back to Homework 6 Main Page</a>
+
+    <script>
+        function calculate() {
+            const input = document.getElementById('numberInput').value;
+            const output = document.getElementById('output');
+
+            // Clear previous output
+            output.innerHTML = '';
+
+            // Validate input
+            const parsedNumber = parseFloat(input);
+            if (isNaN(parsedNumber)) {
+                output.innerHTML = '<p class="error">Error: Please enter a valid number.</p>';
+                return;
+            }
+
+            // Check if the number has at least 4 decimal places
+            const decimalPart = input.split('.')[1];
+            if (!decimalPart || decimalPart.length < 4) {
+                output.innerHTML = '<p class="error">Error: The number must have at least 4 decimal places.</p>';
+                return;
+            }
+
+            // Perform calculations
+            const roundedInteger = Math.round(parsedNumber);
+            const squareRoot = Math.round(Math.sqrt(parsedNumber));
+            const roundedTenths = parsedNumber.toFixed(1);
+            const roundedHundredths = parsedNumber.toFixed(2);
+            const roundedThousandths = parsedNumber.toFixed(3);
+
+            // Display results
+            output.innerHTML = `
+                <p>Original Number: ${parsedNumber}</p>
+                <p>Rounded to Nearest Integer: ${roundedInteger}</p>
+                <p>Square Root (rounded to integer): ${squareRoot}</p>
+                <p>Rounded to Nearest Tenths: ${roundedTenths}</p>
+                <p>Rounded to Nearest Hundredths: ${roundedHundredths}</p>
+                <p>Rounded to Nearest Thousandths: ${roundedThousandths}</p>
+            `;
+        }
+    </script>
+
+</body>
+</html>
