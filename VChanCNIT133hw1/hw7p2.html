@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Homework 7 for JavaScript, jQuery, AJAX course at CCSF">
+    <title>CNIT 133 Homework 7 - Part 2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        nav {
+            display: flex;
+            gap: 20px;
+            background-color: #333;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            z-index: 1;
+        }
+        .dropdown-menu a {
+            color: black;
+            display: block;
+            padding: 5px;
+            text-decoration: none;
+        }
+        .dropdown-menu a:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Navigation - CNIT 133 Homework 7, Part 2</h1>
+
+    <p><a href="hw7.html" target="_blank" rel="noopener noreferrer">Back to Homework 7</a></p>
+
+    <nav>
+        <div class="dropdown">
+            <a href="hw2.html">Homework 2</a>
+            <div class="dropdown-menu">
+                <a href="part1.html">Part 1</a>
+                <a href="part2.html">Part 2</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="hw3.html">Homework 3</a>
+            <div class="dropdown-menu">
+                <a href="hw3p1.html">Part 1</a>
+                <a href="hw3p2.html">Part 2</a>
+                <a href="hw3extra.html">Extra Credit</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="hw4.html">Homework 4</a>
+            <div class="dropdown-menu">
+                <a href="hw4p1.html">Part 1</a>
+                <a href="hw4p2.html">Part 2</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        $(document).ready(function () {
+            // Show dropdown menu on mouse enter
+            $(".dropdown").mouseenter(function () {
+                $(this).find(".dropdown-menu").stop(true, true).slideDown();
+            });
+
+            // Hide dropdown menu on mouse leave
+            $(".dropdown").mouseleave(function () {
+                $(this).find(".dropdown-menu").stop(true, true).slideUp();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Homework 7 for JavaScript, jQuery, AJAX course at CCSF">
+    <title>CNIT 133 Homework 7 - Object Model and Event Model</title>
+    <!-- jQuery Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .part {
+            margin-bottom: 20px;
+        }
+        .description {
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>CNIT 133 Homework 7 - Object Model and Event Model</h1>
+
+    <div class="part">
+        <h2><a href="hw7p1.html" id="part1-link">PART 1</a></h2>
+        <div class="description" id="part1-description">
+            <p>Interactive form to dynamically change background color, text styles, and font size using JavaScript/jQuery. <a href="hw7p1.html" target="_blank" rel="noopener noreferrer">Learn more about PART 1</a></p>
+        </div>
+    </div>
+
+    <div class="part">
+        <h2><a href="hw7p2.html" id="part2-link">PART 2</a></h2>
+        <div class="description" id="part2-description">
+            <p>Horizontal menu with hover-activated dropdowns linking to homework parts, built with JavaScript/jQuery. <a href="hw7p2.html" target="_blank" rel="noopener noreferrer">Learn more about PART 2</a></p>
+        </div>
+    </div>
+
+    <p><a href="index.html" target="_blank" rel="noopener noreferrer">Go to Homework 1</a></p>
+
+    <script>
+        $(document).ready(function () {
+            // Toggle visibility of PART 1 description
+            $("#part1-link").click(function (e) {
+                e.preventDefault();
+                $("#part1-description").toggle();
+            });
+
+            // Toggle visibility of PART 2 description
+            $("#part2-link").click(function (e) {
+                e.preventDefault();
+                $("#part2-description").toggle();
+            });
+        });
+    </script>
+</body>
+</html>

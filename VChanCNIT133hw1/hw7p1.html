@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Homework 7 for JavaScript, jQuery, AJAX course at CCSF">
+    <title>CNIT 133 Homework 7 - Part 1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        main {
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Customize Styles - CNIT 133 Homework 7, Part 1</h1>
+
+    <form id="style-form">
+        <fieldset>
+            <legend>Background Color:</legend>
+            <label><input type="radio" name="bg-color" value="lightblue"> Light Blue</label>
+            <label><input type="radio" name="bg-color" value="lightgreen"> Light Green</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Text Styles:</legend>
+            <label><input type="checkbox" name="text-style" value="bold"> Bold</label>
+            <label><input type="checkbox" name="text-style" value="italic"> Italic</label>
+            <label><input type="checkbox" name="text-style" value="underline"> Underline</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Font Size:</legend>
+            <label for="font-size">Choose a size:</label>
+            <select id="font-size">
+                <option value="100%">100%</option>
+                <option value="120%">120%</option>
+                <option value="150%">150%</option>
+            </select>
+        </fieldset>
+    </form>
+
+    <main>
+        <p>Paragraph 1: This is the area where you can see the changes applied.</p>
+        <p>Paragraph 2: Customize the styles using the form above.</p>
+        <p>Paragraph 3: Experiment with different combinations of styles!</p>
+    </main>
+
+    <p><a href="hw7.html" target="_blank" rel="noopener noreferrer">Back to Homework 7</a></p>
+
+    <script>
+        $(document).ready(function () {
+            // Apply background color
+            $("input[name='bg-color']").change(function () {
+                let color = $(this).val();
+                $("main").css("background-color", color);
+            });
+
+            // Apply text styles
+            $("input[name='text-style']").change(function () {
+                let isChecked = $(this).is(":checked");
+                let style = $(this).val();
+                if (style === "bold") {
+                    $("main").css("font-weight", isChecked ? "bold" : "normal");
+                } else if (style === "italic") {
+                    $("main").css("font-style", isChecked ? "italic" : "normal");
+                } else if (style === "underline") {
+                    $("main").css("text-decoration", isChecked ? "underline" : "none");
+                }
+            });
+
+            // Apply font size
+            $("#font-size").change(function () {
+                let fontSize = $(this).val();
+                $("main").css("font-size", fontSize);
+            });
+        });
+    </script>
+</body>
+</html>
