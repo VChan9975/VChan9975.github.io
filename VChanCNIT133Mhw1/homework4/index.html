@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PWA Example with Local Storage</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <script defer src="service-worker.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Progressive Web Application (PWA)</h1>
+    </header>
+    <main>
+        <!-- PWA Description -->
+        <p>Progressive Web Applications (PWAs) are web applications that behave like native apps. They are fast, reliable, and engaging.</p>
+        <p>PWAs use modern web capabilities to deliver an app-like experience, including offline access, push notifications, and home screen installation.</p>
+        
+        <!-- Background Change Section -->
+        <label for="background-select">Choose a background:</label>
+        <select id="background-select">
+            <option value="white">White (default)</option>
+            <option value="light-blue">Light Blue</option>
+            <option value="light-gold">Light Gold</option>
+        </select>
+        <button id="apply-bg">Change Background</button>
+
+        <!-- Name Input and Greeting Section -->
+        <p>Welcome! Please type your name below:</p>
+        <label for="user-name">Your Name:</label>
+        <input type="text" id="user-name" placeholder="Enter your name">
+        <p id="greeting">Hello, <span id="name-display">Stranger</span>!</p>
+    </main>
+    <footer>
+        <p>&copy; 2024 PWA Example</p>
+    </footer>
+    <script>
+        // References for background functionality
+        const select = document.getElementById('background-select');
+        const button = document.getElementById('apply-bg');
+
+        // Change background on button click
+        button.addEventListener('click', () => {
+            const selected = select.value;
+            document.body.style.backgroundImage = selected === 'light-blue' 
+                ? 'url("light-blue.jpg")' 
+                : selected === 'light-gold' 
+                    ? 'url("light-gold.jpg")' 
+                    : 'none';
+            document.body.style.backgroundColor = selected === 'white' ? 'white' : 'transparent';
+        });
+
+        // References for name input functionality
+        const nameInput = document.getElementById('user-name');
+        const nameDisplay = document.getElementById('name-display');
+
+        // Load name from Local Storage on page load
+        window.addEventListener('load', () => {
+            const storedName = localStorage.getItem('name');
+            if (storedName) {
+                nameDisplay.textContent = storedName;
+            }
+        });
+
+        // Save name to Local Storage and update greeting
+        nameInput.addEventListener('blur', () => {
+            const name = nameInput.value.trim();
+            if (name) {
+                localStorage.setItem('name', name);
+                nameDisplay.textContent = name;
+            } else {
+                nameDisplay.textContent = "Stranger"; // Default if input is empty
+            }
+        });
+    </script>
+</body>
+</html>
