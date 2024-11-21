@@ -9,6 +9,7 @@ const urlsToCache = [
     './icons/icon-512x512.png'
 ];
 
+
 // Install event - Cache resources
 self.addEventListener('install', (event) => {
     console.log('[Service Worker] Installing service worker...');
@@ -40,7 +41,7 @@ self.addEventListener('fetch', (event) => {
     );
 });
 
-// Activate event - Cleanup old caches
+// // Activate event - Cleanup old caches
 self.addEventListener('activate', (event) => {
     console.log('[Service Worker] Activating service worker...');
     event.waitUntil(
@@ -58,7 +59,7 @@ self.addEventListener('activate', (event) => {
 });
 
 button.addEventListener('click', () => {
-    const selected = select.value;
+    const selected = selected.value;
     document.body.style.backgroundImage = selected === 'light-blue' 
         ? 'url("light-blue.jpg")' 
         : selected === 'light-gold' 
@@ -70,4 +71,3 @@ button.addEventListener('click', () => {
     document.body.style.backgroundSize = 'cover'; 
     document.body.style.backgroundPosition = 'center'; 
 });
-

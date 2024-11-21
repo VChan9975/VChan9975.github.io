@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PWA Example with Local Storage</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
-    <script defer src="service-worker.js"></script>
+    <script defer src="./service-worker.js"></script>
 </head>
+
 <body>
     <header>
         <h1>Progressive Web Application (PWA)</h1>
     </header>
     <main>
         <!-- PWA Description -->
-        <p>Progressive Web Applications (PWAs) are web applications that behave like native apps. They are fast, reliable, and engaging.</p>
-        <p>PWAs use modern web capabilities to deliver an app-like experience, including offline access, push notifications, and home screen installation.</p>
-        
+        <p>Progressive Web Applications (PWAs) are web applications that behave like native apps. They are fast,
+            reliable, and engaging.</p>
+        <p>PWAs use modern web capabilities to deliver an app-like experience, including offline access, push
+            notifications, and home screen installation.</p>
+
         <!-- Background Change Section -->
         <label for="background-select">Choose a background:</label>
         <select id="background-select">
@@ -43,10 +47,10 @@
         // Change background on button click
         button.addEventListener('click', () => {
             const selected = select.value;
-            document.body.style.backgroundImage = selected === 'light-blue' 
-                ? 'url("light-blue.jpg")' 
-                : selected === 'light-gold' 
-                    ? 'url("light-gold.jpg")' 
+            document.body.style.backgroundImage = selected === 'light-blue'
+                ? 'url("light-blue.jpg")'
+                : selected === 'light-gold'
+                    ? 'url("light-gold.jpg")'
                     : 'none';
             document.body.style.backgroundColor = selected === 'white' ? 'white' : 'transparent';
         });
@@ -73,6 +77,17 @@
                 nameDisplay.textContent = "Stranger"; // Default if input is empty
             }
         });
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./service-worker.js')
+                .then((registration) => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch((error) => {
+                    console.error('Service Worker registration failed:', error);
+                });
+        }
+
     </script>
 </body>
+
 </html>
