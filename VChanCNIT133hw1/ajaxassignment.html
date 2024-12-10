@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<style>
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  padding: 5px;
+}
+</style>
+<body>
+
+<button type="button" onclick="loadDoc()">Get CD collection</button>
+<br><br>
+<table id="demo"></table>
+
+<script>
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    myFunction(this);
+  }
+  xhttp.open("GET", "cd_catalog.xml");
+  xhttp.send();
+}
+function myFunction(xml) {
+  const xmlDoc = xml.responseXML;
+  const x = xmlDoc.getElementsByTagName("CD");
+  let table="<tr><th>Artist</th><th>Title</th></tr>";
+  for (let i = 0; i <x.length; i++) { 
+    table += "<tr><td>" +
+    x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+    "</td></tr>";
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+</script>
+<h2>Explanation of AJAX</h2>
+<p>AJAX (Asynchronous JavaScript and XML) is a technique for making asynchronous requests to a server to fetch or send data without reloading the entire web page. In this code, when the button is clicked, it triggers the `loadDoc()` function, which performs an AJAX request to retrieve an external XML file (`cd_catalog.xml`). This process is performed asynchronously, allowing the web page to remain responsive while the data is being fetched.</p>
+
+<p>The `fetch` function is used to make the HTTP GET request. Once the request completes successfully, the response is converted to text, and the DOMParser is employed to parse the text into an XML document. This XML document is passed to the `myFunction()` function, which processes the data and dynamically generates a table to display it. If an error occurs during the request, an error message is displayed in the table instead.</p>
+
+<p>This approach highlights the power of AJAX for creating dynamic, interactive web pages that can update content without requiring a full page reload, enhancing the user experience significantly.</p>
+
+<h2>REST API</h2>
+<p>Our company, *WebTech Solutions*, is considering the integration of the <strong>OpenWeatherMap API</strong> into our upcoming weather-based web application, *WeatherWise*. This application aims to provide users with real-time weather updates, forecasts, and localized alerts. The OpenWeatherMap API is a comprehensive and reliable option for such a project.</p>
+
+<p>The OpenWeatherMap API primarily returns data in JSON format, which is lightweight and easy to parse, making it highly suitable for modern web applications. The API also offers responses in XML format for developers who might prefer alternative data structures. This flexibility ensures that the API can seamlessly integrate with various programming languages and frameworks.</p>
+
+<p>To access the OpenWeatherMap API, a free API key is required. The API key ensures secure and authenticated access to the data. OpenWeatherMap offers a tiered pricing model: the free tier includes basic features such as current weather data and simple forecasts, while paid plans offer more advanced features like hourly forecasts, historical data, and higher request limits. This scalability makes the API accessible for startups and large enterprises alike.</p>
+
+<p>Comprehensive documentation is available to assist developers in integrating and using the API. The documentation covers everything from authentication and endpoints to example queries and error handling. Developers can access the <a href="https://openweathermap.org/api" target="_blank" rel="noopener noreferrer">OpenWeatherMap API documentation</a> for detailed guidance.</p>
+
+<p>By using the OpenWeatherMap API, *WeatherWise* can deliver accurate and localized weather information, enhancing user experience and satisfaction. This API's scalability, flexibility, and affordability align perfectly with our goal of building an innovative and accessible weather platform.</p>
+
+<p><a href="index.html">Back to Homework 1 Main Page</a></p>
+</body>
+</html>
