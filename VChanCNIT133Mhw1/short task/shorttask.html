@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison of Hybrid Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f4f4f4;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        header, footer {
+            text-align: center;
+            padding: 10px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hybrid Applications: A Comparison of PhoneGap, Flutter, and React Native</h1>
+    </header>
+    <main>
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>Hybrid solutions allow developers to create applications that can run on multiple platforms with a single codebase. This report compares three popular technologies: PhoneGap (or Cordova), Flutter, and React Native. This information will assist in selecting the most suitable framework for our projects.</p>
+        </section>
+        <section id="comparison">
+            <h2>Comparison Table</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>PhoneGap (Cordova)</th>
+                        <th>Flutter</th>
+                        <th>React Native</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Programming Language</td>
+                        <td>HTML, CSS, JavaScript</td>
+                        <td>Dart</td>
+                        <td>JavaScript</td>
+                    </tr>
+                    <tr>
+                        <td>Performance</td>
+                        <td>Lower due to reliance on WebView</td>
+                        <td>High with native compilation</td>
+                        <td>High with native components</td>
+                    </tr>
+                    <tr>
+                        <td>UI Components</td>
+                        <td>Uses web-based UI</td>
+                        <td>Custom widgets</td>
+                        <td>Uses native components</td>
+                    </tr>
+                    <tr>
+                        <td>Community Support</td>
+                        <td>Declining</td>
+                        <td>Growing rapidly</td>
+                        <td>Very strong</td>
+                    </tr>
+                    <tr>
+                        <td>Offline Support</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section id="conclusion">
+            <h2>Conclusion</h2>
+            <p>Based on the above comparison, React Native is recommended for projects requiring high performance and native-like experience. Flutter is a strong contender for developers willing to learn Dart and prioritize custom widgets. PhoneGap is suitable for simpler projects but may not meet modern performance expectations.</p>
+        </section>
+        <section id="references">
+            <h2>References</h2>
+            <ul>
+                <li><span>Flutter official documentation</span> (https://flutter.dev/docs)</li>
+                <li><span>React Native official documentation</span> (https://reactnative.dev/docs/accessibilityinfo)</li>
+                <li><span>Apache Cordova official website</span> (https://cordova.apache.org)</li>
+            </ul>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
